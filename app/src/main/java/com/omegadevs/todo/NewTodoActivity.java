@@ -1,9 +1,12 @@
 package com.omegadevs.todo;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -98,6 +101,20 @@ public class NewTodoActivity extends AppCompatActivity {
 
                     db.execSQL("insert into '"+table_Name+"' values('"+finaltaskname+"','"+address_task+"','"+date_task+"','"+time_task+"');");
                     Toast.makeText(getApplicationContext(), "data added to the table :" + table_Name , Toast.LENGTH_SHORT).show();
+
+                    AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.set(Calendar.MONTH ,month_x);
+                    calendar.set(Calendar.YEAR ,year_x);
+                    calendar.set(Calendar.DAY_OF_MONTH ,day_x);
+                    calendar.set(Calendar.HOUR_OF_DAY,hour_x);
+                    calendar.set(Calendar.MINUTE,minute_x);
+                    calendar.set(Calendar.SECOND,0);
+
+                    Intent i =new Intent(NewTodoActivity.this,NotificationGenerator.class);
+                    alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis()-1800, PendingIntent.getBroadcast(NewTodoActivity.this, 1, i, PendingIntent.FLAG_UPDATE_CURRENT));
+
 
                     Intent addnew = new Intent(NewTodoActivity.this,MenuActivity.class);
                     addnew.putExtra("tablename",table_Name);
