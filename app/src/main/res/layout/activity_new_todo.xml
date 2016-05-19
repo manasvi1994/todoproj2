@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp">
+
+        <EditText
+            android:id="@+id/input_task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/hint_task" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:paddingLeft="10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAlignment="center"
+            android:text=""
+            android:id="@+id/txt_location" />
+
+        <Button android:id="@+id/btn_location"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Click here to choose the location"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="20dp"
+            android:textColor="@android:color/white"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:paddingLeft="10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=""
+            android:textAlignment="center"
+            android:id="@+id/txt_datepicker" />
+        <Button android:id="@+id/btn_datepicker"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Click here to choose the date"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="20dp"
+            android:textColor="@android:color/white"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:paddingLeft="10dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=""
+            android:textAlignment="center"
+            android:id="@+id/txt_timepicker" />
+
+        <Button android:id="@+id/btn_timepicker"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Click here to choose the date"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="20dp"
+            android:textColor="@android:color/white"/>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/donefab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@drawable/ic_done_black_24dp" />
+
+
+
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">To Do</string>
+    <string name="action_settings">Settings</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="txt_sign_up"><u>Not a user ? Click here to Sign Up!</u></string>
+    <string name="facebook_app_id">1169784763055296</string>
+    <string name="google_app_id">AIzaSyBLTjwWGhQ6kRk5xpySwHXRTz9qPwP6Zfw</string>
+    <string name="btn_sign_in">Sign In</string>
+    <string name="btn_sign_up">Sign Up</string>
+    <string name="hint_task">Task Details</string>
+    <string name="err_msg_email">Enter valid email address</string>
+    <string name="err_msg_password">Enter the password</string>
+    <string name="title_activity_menu">Your Tasks </string>
+</resources>
