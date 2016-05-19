@@ -113,7 +113,7 @@ public class NewTodoActivity extends AppCompatActivity {
                     calendar.set(Calendar.SECOND,0);
 
                     Intent i =new Intent(NewTodoActivity.this,NotificationGenerator.class);
-                    alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis()-1800, PendingIntent.getBroadcast(NewTodoActivity.this, 1, i, PendingIntent.FLAG_UPDATE_CURRENT));
+                    alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), PendingIntent.getBroadcast(NewTodoActivity.this, 1, i, PendingIntent.FLAG_UPDATE_CURRENT));
 
 
                     Intent addnew = new Intent(NewTodoActivity.this,MenuActivity.class);
