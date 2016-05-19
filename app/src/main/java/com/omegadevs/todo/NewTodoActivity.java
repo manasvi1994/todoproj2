@@ -37,7 +37,7 @@ public class NewTodoActivity extends AppCompatActivity {
     Button findMyLocation,datePicker,timePicker;
     int placePickerRequest = 1;
     TextView addressTxt,dateTxt,timeTxt;
-    String address,date,time;
+    String address_task,date_task,time_task;
     int month_x,year_x,day_x;
     int hour_x,minute_x;
     static final int DATE_DIALOG_ID = 0;
@@ -90,13 +90,13 @@ public class NewTodoActivity extends AppCompatActivity {
 
                 String finaltaskname = taskName.getText().toString().trim();
 
-                if (finaltaskname.isEmpty() || date.isEmpty() || time.isEmpty() || address.isEmpty()){
+                if (finaltaskname.isEmpty() || date_task.isEmpty() || time_task.isEmpty() || address_task.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Incomplete Information provided !", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
 
-                    //db.execSQL("insert into '"+tableName+"' values('"+finaltaskname+"','"+address+"','"+date+"','"+time+"');");
+                    db.execSQL("insert into '"+table_Name+"' values('"+finaltaskname+"','"+address_task+"','"+date_task+"','"+time_task+"');");
                     Toast.makeText(getApplicationContext(), "data added to the table :" + table_Name , Toast.LENGTH_SHORT).show();
 
                     Intent addnew = new Intent(NewTodoActivity.this,MenuActivity.class);
@@ -119,8 +119,8 @@ public class NewTodoActivity extends AppCompatActivity {
 
             if (resultCode == RESULT_OK) {
                 Place place = PlacePicker.getPlace(data, this);
-                address = String.format("%s", place.getAddress());
-                addressTxt.setText(address);
+                address_task = String.format("%s", place.getAddress());
+                addressTxt.setText(address_task);
 
             }
 
@@ -168,8 +168,8 @@ public class NewTodoActivity extends AppCompatActivity {
             year_x=year;
             month_x=monthOfYear;
             day_x=dayOfMonth;
-            date = dayOfMonth + "/" + monthOfYear + "/" + year;
-            dateTxt.setText(date);
+            date_task = dayOfMonth + "/" + monthOfYear + "/" + year;
+            dateTxt.setText(date_task);
 
         }
     };
@@ -179,8 +179,8 @@ public class NewTodoActivity extends AppCompatActivity {
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             hour_x=hourOfDay;
             minute_x=minute;
-            time=hour_x + ":" + minute_x;
-            timeTxt.setText(time);
+            time_task=hour_x + ":" + minute_x;
+            timeTxt.setText(time_task);
         }
     };
 

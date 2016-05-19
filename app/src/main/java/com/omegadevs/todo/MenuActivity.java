@@ -56,40 +56,35 @@ public class MenuActivity extends AppCompatActivity {
 
             }
         });
-
         rv =(RecyclerView) findViewById(R.id.rv);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
 
-        //try{
+
+        try{
+            taskDetails = new ArrayList<>();
+            c = db.rawQuery("select * from '"+tableName+"' ;",null);
+            //c.moveToFirst();
+
+            while(c.moveToNext()){
+                tname = c.getString(0);
+                taddress = c.getString(1);
+                ttime = c.getString(2);
+                tdate = c.getString(3);
+                taskDetails.add(new Tasks(tname,taddress,ttime,tdate));
+            }
+
+            db.close();
             rv.setLayoutManager(llm);
             rv.setHasFixedSize(true);
-            initialisedata();
-            final RecyclerAdapter adapter = new RecyclerAdapter(taskDetails);
+            RecyclerAdapter adapter = new RecyclerAdapter(taskDetails);
             rv.setAdapter(adapter);
 
-//        }catch (Exception e){
-     //       Toast.makeText(getApplicationContext(), "Empty Adapter", Toast.LENGTH_SHORT).show();
 
- //       }
+        }catch (Exception e)
+        {
+            Toast.makeText(getApplicationContext(),"It is coming here",Toast.LENGTH_SHORT).show();
         }
 
-    public void initialisedata(){
-
-        taskDetails = new ArrayList<>();
-        c = db.rawQuery("select * from '"+tableName+"';",null);
-        c.moveToFirst();
-        while (c.moveToNext()) {
-            tname = c.getString(0);
-            taddress = c.getString(1);
-            ttime = c.getString(2);
-            tdate = c.getString(3);
-            taskDetails.add(new Tasks(tname,taddress,ttime,tdate));
-            c.moveToNext();
-
         }
-        ;
-
-    }
-
 }
