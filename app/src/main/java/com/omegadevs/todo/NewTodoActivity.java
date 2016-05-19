@@ -183,9 +183,10 @@ public class NewTodoActivity extends AppCompatActivity {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
             year_x=year;
-            month_x=monthOfYear;
+            month_x=monthOfYear+1;
             day_x=dayOfMonth;
-            date_task = dayOfMonth + "/" + monthOfYear + "/" + year;
+            date_task = day_x + "/" + month_x + "/" + year_x;
+            month_x = month_x-1;
             dateTxt.setText(date_task);
 
         }

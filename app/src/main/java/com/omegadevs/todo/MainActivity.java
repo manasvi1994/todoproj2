@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        //Facebook SDK Initialisisation
         FacebookSdk.sdkInitialize(getApplicationContext(), new FacebookSdk.InitializeCallback() {
             @Override
             public void onInitialized() {
@@ -75,13 +75,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setContentView(R.layout.activity_main);
-        callbackManager = CallbackManager.Factory.create();
-        accessTokenTracker = new AccessTokenTracker() {
-            @Override
-            protected void onCurrentAccessTokenChanged(AccessToken oldToken, AccessToken newToken) {
-                accessToken = newToken;
-            }
-        };
 
 
         inputLayoutEmail = (TextInputLayout) findViewById(R.id.input_layout_email);
@@ -131,6 +124,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //check for previous login via fb through token
+        callbackManager = CallbackManager.Factory.create();
+        accessTokenTracker = new AccessTokenTracker() {
+            @Override
+            protected void onCurrentAccessTokenChanged(AccessToken oldToken, AccessToken newToken) {
+                accessToken = newToken;
+            }
+        };
+
+        //login via fb
         btnFbLogin.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -246,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    //to check whether entered email id and password are valid or not.
     private class MyTextWatcher implements TextWatcher {
 
         private View view;
